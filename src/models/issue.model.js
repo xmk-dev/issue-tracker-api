@@ -3,7 +3,7 @@ const issuesStates = require('../constants/issues-states');
 
 const IssueSchema = mongoose.Schema({
   title: { type: String, required: true },
-  description: { type: String, required: false },
+  description: { type: String, required: false, default: '' },
   state: {
     type: String,
     required: true,
