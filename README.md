@@ -7,7 +7,7 @@ Simple issue tracker REST API created in Node.js.
     npm i
     ```
 
-* Compiles for development
+* Start
     ```
     npm run start
     ```
