@@ -19,6 +19,11 @@
     "eslint-plugin-import": "^2.20.1"
   },
   "scripts": {
+    "clean": "rm -rf node_modules",
+    "reinstall": "npm run clean && npm install",
+    "eslint": " eslint './src/**/*.js'",
+    "eslint-fix": " eslint --fix './src/**/*.js'",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
