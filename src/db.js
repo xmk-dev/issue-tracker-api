@@ -8,6 +8,7 @@ module.exports = async () => {
     await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useFindAndModify: false,
     });
   } catch (err) {
     // eslint-disable-next-line no-console
