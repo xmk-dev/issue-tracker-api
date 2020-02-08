@@ -1,78 +1,59 @@
-const { ISSUES: msg } = require('../constants/messages');
+const { ISSUES } = require('../constants/messages');
 const issuesStates = require('../constants/issues-states');
 const Issue = require('../models/issue.model');
 
-const create = async (req, res) => {
-  if (!req.body) {
-    return res.status(400).send({ message: msg.ISSUES.ISSUE_CANNOT_BE_EMPTY });
+const requireNotEmptyIssue = ({ body }) => {
+  if (!body || !Object.keys(body).length) {
+    // eslint-disable-next-line no-throw-literal
+    throw { status: 400, message: ISSUES.CANNOT_BE_EMPTY };
   }
+};
+
+const create = async (req, res) => {
+  requireNotEmptyIssue(req);
 
   const issue = new Issue({ ...req.body });
 
-  try {
-    const result = await issue.save();
-    return res.status(201).send(result);
-  } catch (err) {
-    return res.status(500).send({ message: msg.ERROR_WHILE_SAVING });
-  }
+  const result = await issue.save();
+  return res.status(201).send(result);
 };
 
 const findAll = async (req, res) => {
-  try {
-    const { state } = req.query;
-    const issues = await (state ? Issue.find({ state }) : Issue.find());
+  const { state } = req.query;
+  const issues = await (state ? Issue.find({ state }) : Issue.find());
 
-    return res.status(200).send(issues);
-  } catch (err) {
-    return res.status(500).send({ message: msg.ERROR_WHILE_GETTING_ALL });
-  }
+  return res.status(200).send(issues);
 };
 
 const findOne = async (req, res) => {
-  try {
-    const issueWithId = await Issue.findById(req.params.issueId);
-    return res.status(200).send(issueWithId);
-  } catch (err) {
-    return res.status(500).send({ message: msg.ERROR_WHILE_GETTING_BY_ID });
-  }
+  const issueWithId = await Issue.findById(req.params.issueId);
+
+  return res.status(200).send(issueWithId);
 };
 
 const update = async (req, res) => {
-  if (!req.body) {
-    return res.status(400).send({ message: msg.ISSUES.ISSUE_CANNOT_BE_EMPTY });
+  requireNotEmptyIssue(req);
+
+  const { issueId } = req.params;
+  const currentIssue = await Issue.findById(issueId);
+
+  if (currentIssue.state === issuesStates.CLOSED) {
+    // eslint-disable-next-line no-throw-literal
+    throw { status: 400, message: ISSUES.CANNOT_OPEN_CLOSED_ISSUE };
   }
 
-  try {
-    const updatedIssue = req.body;
-    // eslint-disable-next-line no-underscore-dangle
-    const issueId = req.params.issueId || updatedIssue._id;
-    const currentIssue = await Issue.findById(issueId);
+  const updatedIssue = await Issue.findByIdAndUpdate(
+    issueId,
+    { ...req.body },
+    { new: true },
+  );
 
-    if (currentIssue.state === issuesStates.CLOSED) {
-      return res.status(400).send({ message: msg.ISSUES.CANNOT_OPEN_CLOSED_ISSUE });
-    }
-
-    const newIssue = await Issue.findByIdAndUpdate(issueId, { ...updatedIssue }, { new: true });
-
-    return res.status(200).send(newIssue);
-  } catch (err) {
-    if (err.kind === 'ObjectId' || err.name === 'NotFound') {
-      return res.status(404).send({ message: msg.NOT_FOUND });
-    }
-    return res.status(500).send({ message: msg.ERROR_WHILE_SAVING });
-  }
+  return res.status(200).send(updatedIssue);
 };
 
 const remove = async (req, res) => {
-  try {
-    const deletedIssue = await Issue.findByIdAndRemove(req.params.issueId);
-    return res.status(200).send(deletedIssue);
-  } catch (err) {
-    if (err.kind === 'ObjectId' || err.name === 'NotFound') {
-      return res.status(404).send({ message: msg.NOT_FOUND });
-    }
-    return res.status(500).send({ message: msg.ERROR_WHILE_SAVING });
-  }
+  const deletedIssue = await Issue.findByIdAndRemove(req.params.issueId);
+  return res.status(200).send(deletedIssue);
 };
 
 module.exports = {
