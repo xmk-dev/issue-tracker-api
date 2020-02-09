@@ -1,7 +1,7 @@
 const PORT = process.env.PORT || 9999;
 
 const CORS = {
-  origins: ['*'],
+  origins: '*',
   methods: ['POST', 'PUT', 'GET', 'DELETE'],
 };
 
