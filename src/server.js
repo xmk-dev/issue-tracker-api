@@ -13,7 +13,7 @@ const app = express();
 app.use(morgan('common'));
 app.use(helmet());
 app.use(cors({
-  origin: CORS.headers,
+  origin: CORS.origins,
   methods: CORS.methods,
 }));
 app.use(compression());
