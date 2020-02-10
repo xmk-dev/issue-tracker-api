@@ -18,7 +18,6 @@ app.use(cors({
 }));
 app.use(compression());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 connectDB();
 connectRouter(app);
