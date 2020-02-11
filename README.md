@@ -5,6 +5,7 @@ Simple issue tracker REST API created in Node.js.
 [![Known Vulnerabilities](https://snyk.io/test/github/marcinxkaminski/issue-tracker-api/badge.svg?targetFile=package.json)](https://snyk.io/test/github/marcinxkaminski/issue-tracker-api?targetFile=package.json)
 [![BCH compliance](https://bettercodehub.com/edge/badge/marcinxkaminski/issue-tracker-api?branch=master)](https://bettercodehub.com/)
 
+[Checkout issue tracker React app](https://github.com/marcinxkaminski/issue-tracker-web)
 
 ### Development
 * Install
