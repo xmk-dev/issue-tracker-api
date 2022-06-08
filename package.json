@@ -4,7 +4,7 @@
   "description": "Issue tracker",
   "main": "src/index.js",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.0",
     "cluster": "^0.7.7",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
