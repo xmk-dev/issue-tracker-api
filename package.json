@@ -15,7 +15,8 @@
     "express": "latest",
     "helmet": "latest",
     "mongoose": "^6.4.4",
-    "morgan": "latest"
+    "morgan": "latest",
+    "ts-node": "^10.8.2"
   },
   "devDependencies": {
     "@types/body-parser": "latest",
@@ -44,7 +45,6 @@
     "husky": "latest",
     "jest": "latest",
     "prettier": "latest",
-    "ts-node": "^10.8.2",
     "typescript": "latest"
   },
   "scripts": {
