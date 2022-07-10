@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "description": "Issue tracker",
   "main": "./src/index.ts",
+  "engines": {
+    "node": ">=18.4.0"
+  },
   "dependencies": {
     "body-parser": "latest",
     "cluster": "latest",
