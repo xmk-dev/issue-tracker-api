@@ -1,0 +1,104 @@
+{
+  "env": {
+    "node": true,
+    "es2022": true
+  },
+  "globals": {},
+  "extends": [
+    "airbnb",
+    "prettier",
+    "airbnb-typescript",
+    "plugin:no-unsanitized/DOM",
+    "plugin:sonarjs/recommended",
+    "plugin:unicorn/recommended",
+    "plugin:security/recommended",
+    "plugin:eslint-comments/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "xss",
+    "html",
+    "sonarjs",
+    "unicorn",
+    "security",
+    "prettier",
+    "no-secrets",
+    "no-unsanitized",
+    "eslint-comments",
+    "simple-import-sort",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "no-empty": "warn",
+    "consistent-return": "off",
+    "func-style": [
+      "error",
+      "declaration",
+      {
+        "allowArrowFunctions": true
+      }
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": ["warn", "error"]
+      }
+    ],
+    "no-unused-vars": "warn",
+    "no-restricted-exports": "off",
+    "prefer-destructuring": "error",
+    "prettier/prettier": ["error"],
+    "jsx-a11y/alt-text": "warn",
+    "no-secrets/no-secrets": ["error"],
+    "sonarjs/no-small-switch": "warn",
+    "sonarjs/no-duplicate-string": ["error", 10],
+    "xss/no-mixed-html": "error",
+    "xss/no-location-href-assign": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/prefer-default-export": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "unicorn/no-null": "warn",
+    "unicorn/no-array-for-each": "off",
+    "unicorn/numeric-separators-style": "off",
+    "unicorn/prevent-abbreviations": [
+      "error",
+      {
+        "replacements": {
+          "props": {
+            "properties": false
+          },
+          "params": {
+            "parameters": false
+          }
+        }
+      }
+    ],
+    "unicorn/filename-case": [
+      "warn",
+      {
+        "cases": {
+          "kebabCase": true
+        }
+      }
+    ],
+    "@typescript-eslint/indent": "off"
+  }
+}

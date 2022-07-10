@@ -1,15 +1,14 @@
-const mongoose = require('mongoose');
-const { MONGODB_URI } = require('./config');
+import mongoose from 'mongoose';
+import { MONGODB_URI } from '../constants/config';
 
-module.exports = async () => {
+export const connectDB = async () => {
   mongoose.Promise = global.Promise;
 
   try {
     await mongoose.connect(MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
+      serverSelectionTimeoutMS: 5000,
     });
+    mongoose.set('debug', true);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('Could not connect to the database. Exiting now...', err);

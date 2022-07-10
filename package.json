@@ -1,39 +1,67 @@
 {
   "name": "issue-tracker-api",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Issue tracker",
-  "main": "src/index.js",
+  "main": "./src/index.ts",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "cluster": "^0.7.7",
-    "compression": "^1.7.4",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "helmet": "^3.21.3",
-    "mongoose": "^5.8.11",
-    "morgan": "^1.9.1"
+    "body-parser": "latest",
+    "cluster": "latest",
+    "compression": "latest",
+    "cors": "latest",
+    "debug": "latest",
+    "express": "latest",
+    "helmet": "latest",
+    "mongoose": "^6.4.4",
+    "morgan": "latest"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.20.1"
+    "@types/body-parser": "latest",
+    "@types/cors": "latest",
+    "@types/express": "latest",
+    "@types/morgan": "latest",
+    "@types/node": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "eslint": "latest",
+    "eslint-config-airbnb": "latest",
+    "eslint-config-airbnb-typescript": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-eslint-comments": "latest",
+    "eslint-plugin-html": "latest",
+    "eslint-plugin-import": "latest",
+    "eslint-plugin-markdown": "latest",
+    "eslint-plugin-no-secrets": "latest",
+    "eslint-plugin-no-unsanitized": "latest",
+    "eslint-plugin-prettier": "latest",
+    "eslint-plugin-security": "latest",
+    "eslint-plugin-simple-import-sort": "latest",
+    "eslint-plugin-sonarjs": "latest",
+    "eslint-plugin-unicorn": "^43.0.0",
+    "eslint-plugin-xss": "latest",
+    "husky": "latest",
+    "jest": "latest",
+    "prettier": "latest",
+    "ts-node": "^10.8.2",
+    "typescript": "latest"
   },
   "scripts": {
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
-    "eslint": " eslint './src/**/*.js'",
-    "eslint-fix": " eslint --fix './src/**/*.js'",
-    "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --loader ts-node/esm ./src/index.ts",
+    "test": "jest",
+    "test:coverage": "npm test -- --coverage",
+    "eslint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
+    "eslint:fix": "eslint --fix './src/**/*.{js,jsx,ts,tsx}'",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marcinxkaminski/issue-tracker-api.git"
+    "url": "git+https://github.com/kmsnx/issue-tracker-api.git"
   },
   "author": "Marcin Kaminski",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/marcinxkaminski/issue-tracker-api/issues"
+    "url": "https://github.com/kmsnx/issue-tracker-api/issues"
   },
-  "homepage": "https://github.com/marcinxkaminski/issue-tracker-api#readme"
+  "homepage": "https://github.com/kmsnx/issue-tracker-api#readme"
 }

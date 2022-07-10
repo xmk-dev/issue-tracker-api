@@ -1,0 +1,13 @@
+build
+reports
+**/node_modules/**
+package.json
+package-lock.json
+**/*.min.*
+dist
+out
+*.svg
+tsconfig.json
+next.config.js
+next-env.d.ts
+.next/
