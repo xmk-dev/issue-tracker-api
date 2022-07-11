@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+
 import { MONGODB_URI } from '../constants/config';
 
 export const connectDB = async () => {
@@ -8,10 +9,10 @@ export const connectDB = async () => {
     await mongoose.connect(MONGODB_URI, {
       serverSelectionTimeoutMS: 5000,
     });
-    mongoose.set('debug', true);
-  } catch (err) {
+  } catch (error) {
     // eslint-disable-next-line no-console
-    console.error('Could not connect to the database. Exiting now...', err);
+    console.error('Could not connect to the database. Exiting now...', error);
+    // eslint-disable-next-line unicorn/no-process-exit
     process.exit();
   }
 };

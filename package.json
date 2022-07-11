@@ -24,6 +24,7 @@
     "ts-node": "^10.8.2"
   },
   "devDependencies": {
+    "@types/jest": "latest",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
     "eslint": "latest",
@@ -45,6 +46,7 @@
     "husky": "latest",
     "jest": "latest",
     "prettier": "latest",
+    "ts-jest": "latest",
     "typescript": "latest"
   },
   "scripts": {
@@ -52,7 +54,7 @@
     "reinstall": "npm run clean && npm install",
     "start": "node --loader ts-node/esm ./src/index.ts",
     "test": "jest",
-    "test:coverage": "npm test -- --coverage",
+    "test:coverage": "npm run test -- --coverage",
     "eslint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
     "eslint:fix": "eslint --fix './src/**/*.{js,jsx,ts,tsx}'",
     "prepare": "husky install"

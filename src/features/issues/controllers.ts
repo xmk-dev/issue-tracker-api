@@ -1,40 +1,41 @@
 import type { Request, RequestHandler } from 'express';
+
 import { ISSUES_MESSAGES } from '../../constants';
 import { createIssue, findIssueById, findIssues, removeIssue, updateIssue } from './database';
 import { Issue, ISSUE_STATUS } from './types';
 
 const requireNotEmptyIssue = ({ body }: Request) => {
-  if (!body || !Object.keys(body).length) {
+  if (!body || Object.keys(body).length === 0) {
     // eslint-disable-next-line no-throw-literal
     throw { status: 400, message: ISSUES_MESSAGES.CANNOT_BE_EMPTY };
   }
 };
 
-export const createIssueHandler: RequestHandler = async (req, res) => {
-  requireNotEmptyIssue(req);
-  const result = await createIssue(req.body as Issue);
+export const createIssueHandler: RequestHandler = async (request, res) => {
+  requireNotEmptyIssue(request);
+  const result = await createIssue(request.body as Issue);
 
-  return res.status(201).send(result);
+  res.status(201).send(result);
 };
 
-export const findAllIssuesHandler: RequestHandler = async (req, res) => {
-  const { title, description, status, id } = (req.query || {}) as unknown as Partial<Issue>;
+export const findAllIssuesHandler: RequestHandler = async (request, res) => {
+  const { title, description, status, id } = (request.query || {}) as unknown as Partial<Issue>;
   const result = await findIssues({ title, description, status, id });
 
-  return res.status(200).send(result);
+  res.status(200).send(result);
 };
 
-export const findIssueByIdHandler: RequestHandler = async (req, res) => {
-  const result = await findIssueById(req.params.issueId);
+export const findIssueByIdHandler: RequestHandler = async (request, res) => {
+  const result = await findIssueById(request.params.issueId);
 
-  return res.status(200).send(result);
+  res.status(200).send(result);
 };
 
-export const updateIssueHandler: RequestHandler = async (req, res) => {
-  requireNotEmptyIssue(req);
+export const updateIssueHandler: RequestHandler = async (request, res) => {
+  requireNotEmptyIssue(request);
 
-  const { issueId } = req.params;
-  const issue = req.body as Issue;
+  const { issueId } = request.params;
+  const issue = request.body as Issue;
 
   if (issue.id !== issueId) {
     // eslint-disable-next-line no-throw-literal
@@ -50,18 +51,18 @@ export const updateIssueHandler: RequestHandler = async (req, res) => {
 
   const result = await updateIssue(issue);
 
-  return res.status(200).send(result);
+  res.status(200).send(result);
 };
 
-export const removeIssueHandler: RequestHandler = async (req, res) => {
-  const { issueId } = req.params;
+export const removeIssueHandler: RequestHandler = async (request, res) => {
+  const { issueId } = request.params;
 
   if (!issueId) {
     // eslint-disable-next-line no-throw-literal
     throw { status: 400, message: ISSUES_MESSAGES.MISSING_ID };
   }
 
-  const result = removeIssue(issueId);
+  const result = await removeIssue(issueId);
 
-  return res.status(200).send(result);
+  res.status(200).send(result);
 };

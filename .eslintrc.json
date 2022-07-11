@@ -12,7 +12,7 @@
     "plugin:sonarjs/recommended",
     "plugin:unicorn/recommended",
     "plugin:security/recommended",
-    "plugin:eslint-comments/recommended"
+    "plugin:eslint-comments/recommended",
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -26,15 +26,9 @@
   "plugins": [
     "xss",
     "html",
-    "sonarjs",
-    "unicorn",
-    "security",
     "prettier",
     "no-secrets",
-    "no-unsanitized",
-    "eslint-comments",
-    "simple-import-sort",
-    "@typescript-eslint"
+    "simple-import-sort"
   ],
   "rules": {
     "no-empty": "warn",
@@ -87,6 +81,13 @@
           },
           "params": {
             "parameters": false
+          },
+          "req": {
+            "request": false
+          },
+          "res": {
+            "response": false,
+            "result": false
           }
         }
       }
@@ -99,6 +100,8 @@
         }
       }
     ],
-    "@typescript-eslint/indent": "off"
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/no-misused-promises": "warn"
   }
 }
