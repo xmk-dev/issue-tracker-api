@@ -33,14 +33,17 @@ export const findIssues = async (queryObject: IssueQuerySafe): Promise<Issue[] |
   return results?.map((result) => transform(result.toObject()));
 };
 
-
 export const updateIssue = async ({
   id,
   title,
   status,
   description,
 }: Issue): Promise<Issue | undefined> => {
-  const result = await IssueModel.findByIdAndUpdate(id, { title, description, status });
+  const result = await IssueModel.findByIdAndUpdate(
+    id,
+    { title, description, status },
+    { returnDocument: 'after' },
+  );
 
   return result ? transform(result.toObject()) : undefined;
 };
@@ -55,7 +58,6 @@ export const createIssue = async ({
 
   return result ? transform(result.toObject()) : undefined;
 };
-
 
 export const removeIssue = async (id: string): Promise<Issue | undefined> => {
   const result = await IssueModel.findByIdAndRemove(id);
