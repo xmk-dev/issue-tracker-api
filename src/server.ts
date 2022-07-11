@@ -10,7 +10,9 @@ const app = express();
 
 app.use(morgan('common'));
 app.use(helmet());
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 app.use(bodyParser.json());
 
 connectDB();
