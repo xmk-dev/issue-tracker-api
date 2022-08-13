@@ -11,7 +11,7 @@
     "@types/cors": "latest",
     "@types/express": "latest",
     "@types/morgan": "latest",
-    "@types/node": "latest",
+    "@types/node": "18.0.6",
     "body-parser": "latest",
     "cluster": "latest",
     "compression": "latest",
