@@ -19,7 +19,7 @@
     "debug": "latest",
     "express": "latest",
     "helmet": "latest",
-    "mongoose": "^6.4.4",
+    "mongoose": "^6.5.0",
     "morgan": "latest",
     "ts-node": "^10.8.2"
   },
