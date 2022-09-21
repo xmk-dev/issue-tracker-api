@@ -1,9 +1,9 @@
 # Issue Tracker Api
-[DEMO](https://kmsnx.github.io/issue-tracker-web/)
+[DEMO](https://xmk-dev.github.io/issue-tracker-web/)
 
 Simple issue tracker REST API created in Node.js.
 
-[Checkout issue tracker React app](https://github.com/kmsnx/issue-tracker-web)
+[Checkout issue tracker React app](https://github.com/xmk-dev/issue-tracker-web)
 
 ### Development
 * Install
