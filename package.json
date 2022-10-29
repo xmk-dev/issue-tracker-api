@@ -12,7 +12,7 @@
     "@types/express": "latest",
     "@types/morgan": "latest",
     "@types/node": "latest",
-    "body-parser": "latest",
+    "body-parser": "1.20.1",
     "cluster": "latest",
     "compression": "latest",
     "cors": "latest",
