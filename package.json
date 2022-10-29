@@ -21,7 +21,7 @@
     "helmet": "latest",
     "mongoose": "^6.4.4",
     "morgan": "latest",
-    "ts-node": "^10.8.2"
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@types/jest": "latest",
